@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ml">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +7,11 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f172a'/><path d='M50 20L20 40L50 60L80 40L50 20Z' fill='%2338bdf8'/><path d='M20 60L50 80L80 60' fill='none' stroke='%2338bdf8' stroke-width='8' stroke-linecap='round'/></svg>">
 
     <title>NAXORA132 | Professional Visual Portfolio</title>
-    <meta name="description" content="Naxora132 Professional Creative Portfolio. View stunning photos and videos.">
-    <meta name="keywords" content="Naxora132, Naxora, Portfolio, Video Editing, Photography, Kerala">
-    <meta name="author" content="Naxora132">
+    <meta name="description" content="Official portfolio of NAXORA132. Showcasing professional photography and cinematic video editing.">
+    <meta name="keywords" content="Naxora132, Portfolio, Photography, Cinematography, Video Editing, Creative Visuals">
+    <meta name="author" content="NAXORA132">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Manjari:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -22,10 +22,9 @@
             --text-dim: #94a3b8;
         }
 
-        /* സ്മൂത്ത് സ്ക്രോളിംഗ് */
         html { scroll-behavior: smooth; }
 
-        /* ലോഡിങ് ആനിമേഷൻ */
+        /* Loader Animation */
         #loader {
             position: fixed;
             width: 100%;
@@ -50,9 +49,9 @@
             to { transform: scale(1.05); opacity: 1; }
         }
 
-        /* ജനറൽ സ്റ്റൈൽ */
+        /* General Styling */
         body { 
-            font-family: 'Inter', 'Manjari', sans-serif; 
+            font-family: 'Inter', sans-serif; 
             background-color: var(--bg); 
             color: var(--text-main); 
             margin: 0; 
@@ -82,7 +81,7 @@
             text-transform: uppercase;
         }
 
-        /* നാവിഗേഷൻ ബാർ */
+        /* Navigation Bar */
         .nav-buttons { 
             position: sticky; 
             top: 0; 
@@ -105,6 +104,7 @@
             font-weight: bold; 
             transition: 0.3s;
             font-size: 0.9rem;
+            text-transform: uppercase;
         }
 
         .nav-btn.active { 
@@ -115,7 +115,7 @@
 
         .container { max-width: 1200px; margin: auto; padding: 40px 20px; min-height: 70vh; }
 
-        /* അഡ്മിൻ പാനൽ ബോക്സ് */
+        /* Admin Panel */
         .admin-only { 
             display: none; 
             background: var(--card-bg); 
@@ -148,9 +148,10 @@
             cursor: pointer; 
             width: 100%;
             transition: 0.3s;
+            text-transform: uppercase;
         }
 
-        /* സെർച്ച് ബാർ */
+        /* Search Bar */
         .search-bar { 
             width: 100%; 
             max-width: 500px;
@@ -165,7 +166,7 @@
             text-align: center;
         }
 
-        /* ഗാലറി ഐറ്റംസ് */
+        /* Gallery Grid */
         .gallery { 
             display: grid; 
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
@@ -201,7 +202,7 @@
             font-size: 1rem; 
         }
 
-        /* അഡ്മിൻ ബട്ടണുകൾ */
+        /* Admin Controls */
         .admin-controls { margin-top: 12px; display: none; border-top: 1px solid #334155; padding-top: 10px; }
         .btn-delete { background: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 5px; cursor: pointer; margin-right: 5px; }
         .btn-rename { background: #f59e0b; color: white; border: none; padding: 6px 12px; border-radius: 5px; cursor: pointer; }
@@ -221,7 +222,6 @@
             opacity: 0.5;
         }
 
-        /* റെസ്പോൺസീവ് സെറ്റിംഗ്സ് */
         @media (max-width: 600px) {
             .nav-btn { padding: 8px 12px; font-size: 0.8rem; margin: 2px; }
             .logo { letter-spacing: 5px; }
@@ -244,14 +244,14 @@
             <path d="M2 12L12 17L22 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <h1 class="logo">NAXORA132</h1>
-        <p style="color: var(--text-dim); margin-top: 10px; font-weight: bold;">CREATIVE VISUALS</p>
+        <p style="color: var(--text-dim); margin-top: 10px; font-weight: bold; letter-spacing: 1px;">CREATIVE VISUALS</p>
     </header>
 
     <nav class="nav-buttons">
-        <button class="nav-btn active" onclick="showSection('home', this)">HOME</button>
-        <button class="nav-btn" onclick="showSection('photos', this)">PHOTOS</button>
-        <button class="nav-btn" onclick="showSection('videos', this)">VIDEOS</button>
-        <button id="logoutBtn" class="nav-btn" style="display:none; color: #ef4444; border: 1px solid #ef4444;" onclick="adminLogout()">LOGOUT</button>
+        <button class="nav-btn active" onclick="showSection('home', this)">Home</button>
+        <button class="nav-btn" onclick="showSection('photos', this)">Photos</button>
+        <button class="nav-btn" onclick="showSection('videos', this)">Videos</button>
+        <button id="logoutBtn" class="nav-btn" style="display:none; color: #ef4444; border: 1px solid #ef4444;" onclick="adminLogout()">Logout</button>
     </nav>
 
     <div class="container">
@@ -259,7 +259,8 @@
             <div style="background: var(--card-bg); padding: 60px 20px; border-radius: 25px; text-align: center; border: 1px solid rgba(255,255,255,0.05);">
                 <h2 style="color: var(--primary); font-size: 2rem;">Welcome to My Workspace</h2>
                 <p style="color: var(--text-dim); line-height: 1.8; max-width: 600px; margin: 20px auto;">
-                    ക്യാമറ കണ്ണിലൂടെയുള്ള കാഴ്ചകളും സർഗ്ഗാത്മകമായ വീഡിയോ എഡിറ്റിംഗുകളും ഇവിടെ ആസ്വദിക്കാം.
+                    Explore a collection of visual moments captured through my lens and creative video edits. 
+                    I focus on storytelling through every frame.
                 </p>
                 <div style="margin-top: 30px;">
                     <span style="border: 1px solid var(--primary); padding: 8px 15px; border-radius: 20px; color: var(--primary); font-size: 0.9rem;">Photography</span>
@@ -271,32 +272,31 @@
         <div id="photos" class="content-section">
             <div id="adminPhoto" class="admin-only">
                 <h3>Upload Image</h3>
-                <input type="text" id="photoName" class="input-field" placeholder="ചിത്രത്തിന്റെ പേര്">
+                <input type="text" id="photoName" class="input-field" placeholder="Entry Title">
                 <input type="file" id="photoInput" accept="image/*" class="input-field">
                 <button class="btn" onclick="uploadMedia('photo')">Add Photo</button>
             </div>
-            <input type="text" id="photoSearch" class="search-bar" placeholder="ചിത്രങ്ങൾ തിരയുക..." onkeyup="filterMedia('photo')">
+            <input type="text" id="photoSearch" class="search-bar" placeholder="Search photos..." onkeyup="filterMedia('photo')">
             <div class="gallery" id="photoGallery"></div>
         </div>
 
         <div id="videos" class="content-section">
             <div id="adminVideo" class="admin-only">
                 <h3>Upload Video</h3>
-                <input type="text" id="videoName" class="input-field" placeholder="വീഡിയോ പേര്">
+                <input type="text" id="videoName" class="input-field" placeholder="Entry Title">
                 <input type="file" id="videoInput" accept="video/*" class="input-field">
                 <button class="btn" onclick="uploadMedia('video')">Add Video</button>
             </div>
-            <input type="text" id="videoSearch" class="search-bar" placeholder="വീഡിയോകൾ തിരയുക..." onkeyup="filterMedia('video')">
+            <input type="text" id="videoSearch" class="search-bar" placeholder="Search videos..." onkeyup="filterMedia('video')">
             <div class="gallery" id="videoGallery"></div>
         </div>
     </div>
 
-    <span class="admin-trigger" onclick="adminLogin()">Admin Panel</span>
+    <span class="admin-trigger" onclick="adminLogin()">Admin Access</span>
 
     <script>
         let isAdminActive = false;
 
-        // പേജ് ലോഡിങ് കഴിഞ്ഞ് ലോഡർ മാറ്റാൻ
         window.onload = function() {
             setTimeout(() => {
                 document.getElementById('loader').style.opacity = '0';
@@ -305,19 +305,17 @@
             loadFromStorage();
         };
 
-        // അഡ്മിൻ ലോഗിൻ ഫംഗ്ഷൻ
         function adminLogin() {
-            const pass = prompt("Password നൽകുക:");
+            const pass = prompt("Enter Admin Password:");
             if (pass === "naxora2525") {
                 isAdminActive = true;
                 updateAdminUI();
-                alert("അഡ്മിൻ മോഡ് സജീവമായി!");
+                alert("Admin access granted.");
             } else if(pass != null) {
-                alert("തെറ്റായ പാസ്‌വേഡ്!");
+                alert("Access Denied: Incorrect Password.");
             }
         }
 
-        // ലോഗൗട്ട്
         function adminLogout() {
             isAdminActive = false;
             location.reload(); 
@@ -329,7 +327,6 @@
             document.getElementById('logoutBtn').style.display = isAdminActive ? 'inline-block' : 'none';
         }
 
-        // സെക്ഷൻ മാറ്റാൻ
         function showSection(id, btn) {
             document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active-section'));
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -338,7 +335,6 @@
             updateAdminUI();
         }
 
-        // അപ്‌ലോഡ് ഫംഗ്ഷൻ
         function uploadMedia(type) {
             const nameInput = document.getElementById(type + 'Name');
             const fileInput = document.getElementById(type + 'Input');
@@ -360,7 +356,7 @@
                 };
                 reader.readAsDataURL(file);
             } else {
-                alert("ഒരു ഫയൽ തിരഞ്ഞെടുക്കുക!");
+                alert("Please select a file to upload.");
             }
         }
 
@@ -388,14 +384,13 @@
             gallery.prepend(box);
         }
 
-        // ലോക്കൽ സ്റ്റോറേജ് സേവിംഗ്
         function saveToStorage(item) {
             try {
                 let data = JSON.parse(localStorage.getItem('naxora_data')) || [];
                 data.push(item);
                 localStorage.setItem('naxora_data', JSON.stringify(data));
             } catch(e) { 
-                alert("സ്റ്റോറേജ് പരിധി കഴിഞ്ഞു! ചെറിയ സൈസ് ഫയലുകൾ ഉപയോഗിക്കുക."); 
+                alert("Storage limit exceeded! Please use smaller files."); 
             }
         }
 
@@ -405,7 +400,7 @@
         }
 
         function deleteItem(id) {
-            if(confirm("ഇത് ഡിലീറ്റ് ചെയ്യണോ?")) {
+            if(confirm("Confirm deletion of this item?")) {
                 let data = JSON.parse(localStorage.getItem('naxora_data')) || [];
                 data = data.filter(i => i.id !== id);
                 localStorage.setItem('naxora_data', JSON.stringify(data));
@@ -414,7 +409,7 @@
         }
 
         function renameItem(id) {
-            const newName = prompt("പുതിയ പേര് നൽകുക:");
+            const newName = prompt("Enter new title:");
             if (newName && newName.trim() !== "") {
                 let data = JSON.parse(localStorage.getItem('naxora_data')) || [];
                 const idx = data.findIndex(i => i.id === id);
@@ -426,7 +421,6 @@
             }
         }
 
-        // സെർച്ച് ഫിൽട്ടർ
         function filterMedia(type) {
             const q = document.getElementById(type + 'Search').value.toLowerCase();
             const boxes = document.getElementById(type + 'Gallery').getElementsByClassName('media-box');
