@@ -7,12 +7,6 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f172a'/><path d='M50 20L20 40L50 60L80 40L50 20Z' fill='%2338bdf8'/><path d='M20 60L50 80L80 60' fill='none' stroke='%2338bdf8' stroke-width='8' stroke-linecap='round'/></svg>">
 
     <title>NAXORA132 | Professional Visual Portfolio</title>
-    <meta name="description" content="Official portfolio of NAXORA132. Showcasing professional visuals and creative editing.">
-    <meta name="keywords" content="Naxora132, Portfolio, Video Editing, Creative Visuals">
-    <meta name="author" content="NAXORA132">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    
     <style>
         :root {
             --primary: #38bdf8;
@@ -24,210 +18,42 @@
 
         html { scroll-behavior: smooth; }
 
-        /* Loader Animation */
         #loader {
-            position: fixed;
-            width: 100%;
-            height: 100vh;
-            background: var(--bg);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.8s ease-out;
+            position: fixed; width: 100%; height: 100vh; background: var(--bg);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 9999; transition: opacity 0.8s ease-out;
         }
-        .loader-text {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--primary);
-            letter-spacing: 10px;
-            animation: pulse 1.5s ease-in-out infinite alternate;
-        }
-        @keyframes pulse {
-            from { transform: scale(0.9); opacity: 0.5; }
-            to { transform: scale(1.05); opacity: 1; }
-        }
+        .loader-text { font-size: 2.5rem; font-weight: 900; color: var(--primary); letter-spacing: 10px; animation: pulse 1.5s ease-in-out infinite alternate; }
+        @keyframes pulse { from { transform: scale(0.9); opacity: 0.5; } to { transform: scale(1.05); opacity: 1; } }
 
-        /* General Styling */
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: var(--bg); 
-            color: var(--text-main); 
-            margin: 0; 
-            overflow-x: hidden;
-        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text-main); margin: 0; overflow-x: hidden; }
+        header { padding: 80px 20px; background: radial-gradient(circle at top, #1e293b, #0f172a); text-align: center; }
+        .logo { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 900; letter-spacing: 10px; color: var(--primary); margin: 0; text-transform: uppercase; }
 
-        header { 
-            padding: 80px 20px; 
-            background: radial-gradient(circle at top, #1e293b, #0f172a); 
-            text-align: center;
-        }
-
-        .brand-icon {
-            width: 70px;
-            height: 70px;
-            fill: var(--primary);
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.4));
-        }
-
-        .logo { 
-            font-size: clamp(2.5rem, 8vw, 4rem); 
-            font-weight: 900; 
-            letter-spacing: 10px; 
-            color: var(--primary); 
-            margin: 0;
-            text-transform: uppercase;
-        }
-
-        /* Navigation Bar */
-        .nav-buttons { 
-            position: sticky; 
-            top: 0; 
-            background: rgba(15, 23, 42, 0.9); 
-            padding: 15px; 
-            z-index: 1000; 
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            text-align: center;
-        }
-
-        .nav-btn { 
-            background: transparent; 
-            color: var(--text-dim); 
-            border: 1px solid transparent; 
-            padding: 10px 20px; 
-            margin: 0 5px; 
-            border-radius: 30px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            transition: 0.3s;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-        }
-
-        .nav-btn.active { 
-            background: rgba(56, 189, 248, 0.1); 
-            color: var(--primary); 
-            border: 1px solid var(--primary); 
-        }
+        .nav-buttons { position: sticky; top: 0; background: rgba(15, 23, 42, 0.9); padding: 15px; z-index: 1000; backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.05); text-align: center; }
+        .nav-btn { background: transparent; color: var(--text-dim); border: 1px solid transparent; padding: 10px 20px; margin: 0 5px; border-radius: 30px; cursor: pointer; font-weight: bold; transition: 0.3s; font-size: 0.9rem; text-transform: uppercase; }
+        .nav-btn.active { background: rgba(56, 189, 248, 0.1); color: var(--primary); border: 1px solid var(--primary); }
 
         .container { max-width: 1200px; margin: auto; padding: 40px 20px; min-height: 70vh; }
+        .admin-only { display: none; background: var(--card-bg); padding: 30px; border-radius: 20px; border: 2px dashed var(--primary); max-width: 500px; margin: 0 auto 40px auto; }
+        .input-field { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; background: #0f172a; color: white; border: 1px solid #334155; box-sizing: border-box; }
+        .btn { background: var(--primary); color: #0f172a; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; text-transform: uppercase; }
+        
+        .search-bar { width: 100%; max-width: 500px; padding: 15px 25px; margin: 0 auto 40px auto; display: block; border-radius: 50px; border: 1px solid #334155; background: #1e293b; color: white; text-align: center; }
 
-        /* Admin Panel */
-        .admin-only { 
-            display: none; 
-            background: var(--card-bg); 
-            padding: 30px; 
-            border-radius: 20px; 
-            border: 2px dashed var(--primary); 
-            max-width: 500px; 
-            margin: 0 auto 40px auto; 
-            animation: fadeIn 0.5s;
-        }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        .media-box { background: var(--card-bg); padding: 12px; border-radius: 18px; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s ease; }
+        .media-box:hover { transform: translateY(-8px); border-color: var(--primary); }
+        .media-box img, .media-box video { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; }
+        .file-name-display { font-weight: bold; color: var(--primary); display: block; margin-top: 12px; font-size: 1rem; }
 
-        .input-field { 
-            width: 100%; 
-            padding: 12px; 
-            margin: 10px 0; 
-            border-radius: 8px; 
-            background: #0f172a; 
-            color: white; 
-            border: 1px solid #334155; 
-            box-sizing: border-box;
-        }
-
-        .btn { 
-            background: var(--primary); 
-            color: #0f172a; 
-            padding: 12px; 
-            border: none; 
-            border-radius: 8px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            width: 100%;
-            transition: 0.3s;
-            text-transform: uppercase;
-        }
-
-        /* Search Bar */
-        .search-bar { 
-            width: 100%; 
-            max-width: 500px;
-            padding: 15px 25px; 
-            margin: 0 auto 40px auto; 
-            display: block;
-            border-radius: 50px; 
-            border: 1px solid #334155; 
-            background: #1e293b; 
-            color: white; 
-            outline: none;
-            text-align: center;
-        }
-
-        /* Gallery Grid */
-        .gallery { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-            gap: 25px; 
-        }
-
-        .media-box { 
-            background: var(--card-bg); 
-            padding: 12px; 
-            border-radius: 18px; 
-            border: 1px solid rgba(255,255,255,0.05); 
-            transition: 0.4s ease; 
-        }
-
-        .media-box:hover {
-            transform: translateY(-8px);
-            border-color: var(--primary);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-        }
-
-        .media-box img, .media-box video { 
-            width: 100%; 
-            height: 200px; 
-            object-fit: cover; 
-            border-radius: 12px; 
-        }
-
-        .file-name-display { 
-            font-weight: bold; 
-            color: var(--primary); 
-            display: block; 
-            margin-top: 12px; 
-            font-size: 1rem; 
-        }
-
-        /* Admin Controls */
         .admin-controls { margin-top: 12px; display: none; border-top: 1px solid #334155; padding-top: 10px; }
-        .btn-delete { background: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 5px; cursor: pointer; margin-right: 5px; }
-        .btn-rename { background: #f59e0b; color: white; border: none; padding: 6px 12px; border-radius: 5px; cursor: pointer; }
-
+        .btn-delete { background: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 5px; cursor: pointer; }
+        
         .content-section { display: none; animation: slideUp 0.6s ease; } 
         .active-section { display: block; }
-
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        .admin-trigger { 
-            position: fixed; 
-            bottom: 15px; 
-            right: 15px; 
-            font-size: 0.7rem; 
-            color: #334155; 
-            cursor: pointer;
-            opacity: 0.5;
-        }
-
-        @media (max-width: 600px) {
-            .nav-btn { padding: 8px 12px; font-size: 0.8rem; margin: 2px; }
-            .logo { letter-spacing: 5px; }
-            header { padding: 60px 15px; }
-            .gallery { grid-template-columns: 1fr; }
-        }
+        .admin-trigger { position: fixed; bottom: 15px; right: 15px; font-size: 0.7rem; color: #334155; cursor: pointer; opacity: 0.5; }
     </style>
 </head>
 <body>
@@ -238,13 +64,8 @@
     </div>
 
     <header>
-        <svg class="brand-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L2 7L12 12L22 7L12 2Z" />
-            <path d="M2 17L12 22L22 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M2 12L12 17L22 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
         <h1 class="logo">NAXORA132</h1>
-        <p style="color: var(--text-dim); margin-top: 10px; font-weight: bold; letter-spacing: 1px;">VISUAL PORTFOLIO</p>
+        <p style="color: var(--text-dim); margin-top: 10px; font-weight: bold;">VISUAL PORTFOLIO</p>
     </header>
 
     <nav class="nav-buttons">
@@ -256,21 +77,18 @@
 
     <div class="container">
         <div id="home" class="content-section active-section">
-            <div style="background: var(--card-bg); padding: 60px 20px; border-radius: 25px; text-align: center; border: 1px solid rgba(255,255,255,0.05);">
-                <h2 style="color: var(--primary); font-size: 2rem;">Welcome to My Workspace</h2>
-                <p style="color: var(--text-dim); line-height: 1.8; max-width: 600px; margin: 20px auto;">
-                    Explore a collection of visual moments captured through my lens and creative edits. 
-                    I focus on storytelling through every frame.
-                </p>
+            <div style="background: var(--card-bg); padding: 60px 20px; border-radius: 25px; text-align: center;">
+                <h2 style="color: var(--primary);">Welcome to My Workspace</h2>
+                <p style="color: var(--text-dim);">Explore visual moments through my lens.</p>
             </div>
         </div>
 
         <div id="photos" class="content-section">
             <div id="adminPhoto" class="admin-only">
                 <h3>Upload Image</h3>
-                <input type="text" id="photoName" class="input-field" placeholder="Entry Title">
+                <input type="text" id="photoName" class="input-field" placeholder="Title">
                 <input type="file" id="photoInput" accept="image/*" class="input-field">
-                <button class="btn" onclick="uploadMedia('photo')">Add Photo</button>
+                <button class="btn" onclick="handleUpload('photo')">Add Photo</button>
             </div>
             <input type="text" id="photoSearch" class="search-bar" placeholder="Search photos..." onkeyup="filterMedia('photo')">
             <div class="gallery" id="photoGallery"></div>
@@ -279,9 +97,9 @@
         <div id="videos" class="content-section">
             <div id="adminVideo" class="admin-only">
                 <h3>Upload Video</h3>
-                <input type="text" id="videoName" class="input-field" placeholder="Entry Title">
+                <input type="text" id="videoName" class="input-field" placeholder="Title">
                 <input type="file" id="videoInput" accept="video/*" class="input-field">
-                <button class="btn" onclick="uploadMedia('video')">Add Video</button>
+                <button class="btn" onclick="handleUpload('video')">Add Video</button>
             </div>
             <input type="text" id="videoSearch" class="search-bar" placeholder="Search videos..." onkeyup="filterMedia('video')">
             <div class="gallery" id="videoGallery"></div>
@@ -291,31 +109,35 @@
     <span class="admin-trigger" onclick="adminLogin()">Admin Access</span>
 
     <script>
+        let db;
         let isAdminActive = false;
 
-        window.onload = function() {
+        // --- IndexedDB Setup ---
+        const request = indexedDB.open("NaxoraPortfolioDB", 1);
+        request.onupgradeneeded = (e) => {
+            db = e.target.result;
+            db.createObjectStore("media", { keyPath: "id" });
+        };
+        request.onsuccess = (e) => {
+            db = e.target.result;
+            loadMediaFromDB();
+        };
+
+        window.onload = () => {
             setTimeout(() => {
                 document.getElementById('loader').style.opacity = '0';
                 setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 800);
-            }, 1800);
-            loadFromStorage();
+            }, 1000);
         };
 
         function adminLogin() {
-            const pass = prompt("Enter Admin Password:");
-            if (pass === "naxora2525") {
+            if (prompt("Password:") === "naxora2525") {
                 isAdminActive = true;
                 updateAdminUI();
-                alert("Admin access granted.");
-            } else if(pass != null) {
-                alert("Access Denied: Incorrect Password.");
             }
         }
 
-        function adminLogout() {
-            isAdminActive = false;
-            location.reload(); 
-        }
+        function adminLogout() { location.reload(); }
 
         function updateAdminUI() {
             document.querySelectorAll('.admin-only').forEach(el => el.style.display = isAdminActive ? 'block' : 'none');
@@ -328,92 +150,61 @@
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
             document.getElementById(id).classList.add('active-section');
             btn.classList.add('active');
-            updateAdminUI();
         }
 
-        function uploadMedia(type) {
-            const nameInput = document.getElementById(type + 'Name');
-            const fileInput = document.getElementById(type + 'Input');
-            const file = fileInput.files[0];
-            
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const item = { 
-                        id: Date.now(), 
-                        type: type, 
-                        name: nameInput.value || "Untitled Project", 
-                        src: e.target.result 
-                    };
+        function handleUpload(type) {
+            const name = document.getElementById(type + 'Name').value || "Untitled";
+            const file = document.getElementById(type + 'Input').files[0];
+            if (!file) return alert("Select file!");
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const item = { id: Date.now(), type, name, src: e.target.result };
+                const transaction = db.transaction(["media"], "readwrite");
+                transaction.objectStore("media").add(item);
+                transaction.oncomplete = () => {
                     displayMedia(item);
-                    saveToStorage(item);
-                    nameInput.value = '';
-                    fileInput.value = '';
+                    document.getElementById(type + 'Name').value = '';
+                    document.getElementById(type + 'Input').value = '';
                 };
-                reader.readAsDataURL(file);
-            } else {
-                alert("Please select a file to upload.");
-            }
+            };
+            reader.readAsDataURL(file);
         }
 
         function displayMedia(item) {
             const gallery = document.getElementById(item.type + 'Gallery');
-            if(!gallery) return;
-
             const box = document.createElement('div');
             box.className = 'media-box';
             box.id = "item-" + item.id;
             box.setAttribute('data-name', item.name.toLowerCase());
             
-            let media = (item.type === 'photo') 
-                ? `<img src="${item.src}" loading="lazy">` 
-                : `<video src="${item.src}" controls></video>`;
+            const mediaTag = item.type === 'photo' ? `<img src="${item.src}">` : `<video src="${item.src}" controls></video>`;
             
             box.innerHTML = `
-                ${media}
-                <span class="file-name-display" id="name-${item.id}">${item.name}</span>
+                ${mediaTag}
+                <span class="file-name-display">${item.name}</span>
                 <div class="admin-controls" style="display: ${isAdminActive ? 'block' : 'none'}">
                     <button class="btn-delete" onclick="deleteItem(${item.id})">Delete</button>
-                    <button class="btn-rename" onclick="renameItem(${item.id})">Rename</button>
                 </div>
             `;
             gallery.prepend(box);
         }
 
-        function saveToStorage(item) {
-            try {
-                let data = JSON.parse(localStorage.getItem('naxora_data')) || [];
-                data.push(item);
-                localStorage.setItem('naxora_data', JSON.stringify(data));
-            } catch(e) { 
-                alert("Storage limit exceeded! Please use smaller files."); 
-            }
-        }
-
-        function loadFromStorage() {
-            let data = JSON.parse(localStorage.getItem('naxora_data')) || [];
-            data.forEach(item => displayMedia(item));
+        function loadMediaFromDB() {
+            const objectStore = db.transaction("media").objectStore("media");
+            objectStore.openCursor().onsuccess = (e) => {
+                const cursor = e.target.result;
+                if (cursor) {
+                    displayMedia(cursor.value);
+                    cursor.continue();
+                }
+            };
         }
 
         function deleteItem(id) {
-            if(confirm("Confirm deletion of this item?")) {
-                let data = JSON.parse(localStorage.getItem('naxora_data')) || [];
-                data = data.filter(i => i.id !== id);
-                localStorage.setItem('naxora_data', JSON.stringify(data));
+            if (confirm("Delete this?")) {
+                db.transaction(["media"], "readwrite").objectStore("media").delete(id);
                 document.getElementById("item-" + id).remove();
-            }
-        }
-
-        function renameItem(id) {
-            const newName = prompt("Enter new title:");
-            if (newName && newName.trim() !== "") {
-                let data = JSON.parse(localStorage.getItem('naxora_data')) || [];
-                const idx = data.findIndex(i => i.id === id);
-                if (idx !== -1) {
-                    data[idx].name = newName;
-                    localStorage.setItem('naxora_data', JSON.stringify(data));
-                    document.getElementById("name-" + id).innerText = newName;
-                }
             }
         }
 
