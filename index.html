@@ -1,195 +1,384 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="description" content="Naxora132 - Professional Visual Portfolio for Photos and Videos">
-
-<meta name="keywords" content="Naxora, Naxora132, Portfolio, Photography, Videography">
-
-<meta name="author" content="Naxora132">
-<meta name="keywords" content="Naxora, Naxora132, Portfolio, Photography, Videography">
-
-<meta name="author" content="Naxora132"><!DOCTYPE html>
-<html lang="en">
+<html lang="ml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NAXORA | Professional Portfolio</title>
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f172a'/><path d='M50 20L20 40L50 60L80 40L50 20Z' fill='%2338bdf8'/><path d='M20 60L50 80L80 60' fill='none' stroke='%2338bdf8' stroke-width='8' stroke-linecap='round'/></svg>">
+
+    <title>NAXORA132 | Professional Visual Portfolio</title>
+    <meta name="description" content="Naxora132 Professional Creative Portfolio. View stunning photos and videos.">
+    <meta name="keywords" content="Naxora132, Naxora, Portfolio, Video Editing, Photography, Kerala">
+    <meta name="author" content="Naxora132">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Manjari:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --primary: #38bdf8;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        /* സ്മൂത്ത് സ്ക്രോളിംഗ് */
+        html { scroll-behavior: smooth; }
+
         /* ലോഡിങ് ആനിമേഷൻ */
         #loader {
             position: fixed;
             width: 100%;
             height: 100vh;
-            background: #0f172a;
+            background: var(--bg);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 9999;
             transition: opacity 0.8s ease-out;
         }
         .loader-text {
-            font-size: 4rem;
+            font-size: 2.5rem;
             font-weight: 900;
-            color: #38bdf8;
-            letter-spacing: 15px;
-            text-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
-            animation: introAnim 2s ease-in-out forwards;
-            opacity: 0;
+            color: var(--primary);
+            letter-spacing: 10px;
+            animation: pulse 1.5s ease-in-out infinite alternate;
         }
-        @keyframes introAnim {
-            0% { opacity: 0; transform: scale(0.8); letter-spacing: 5px; }
-            50% { opacity: 1; transform: scale(1.1); letter-spacing: 15px; }
-            100% { opacity: 1; transform: scale(1); letter-spacing: 12px; }
+        @keyframes pulse {
+            from { transform: scale(0.9); opacity: 0.5; }
+            to { transform: scale(1.05); opacity: 1; }
         }
 
         /* ജനറൽ സ്റ്റൈൽ */
-        body { font-family: 'Segoe UI', sans-serif; background-color: #0f172a; color: white; margin: 0; text-align: center; }
-        header { padding: 40px 20px; background: linear-gradient(135deg, #1e293b, #0f172a); }
-        .logo { font-size: 3rem; font-weight: 900; letter-spacing: 8px; color: #38bdf8; }
-        
-        .nav-buttons { margin: 0; position: sticky; top: 0; background: rgba(15, 23, 42, 0.95); padding: 15px; z-index: 1000; border-bottom: 1px solid #1e293b; backdrop-filter: blur(10px); }
-        .nav-btn { background: #1e293b; color: #38bdf8; border: 2px solid #38bdf8; padding: 10px 25px; margin: 5px; border-radius: 25px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        .nav-btn.active { background: #38bdf8; color: #0f172a; }
-        
-        .container { max-width: 1100px; margin: auto; padding: 20px; min-height: 80vh; }
-        
-        /* അഡ്മിൻ പാനൽ സ്റ്റൈൽ */
-        .admin-only { display: none; background: #1e293b; padding: 20px; border-radius: 12px; border: 2px dashed #38bdf8; max-width: 500px; margin: 20px auto; }
-        .input-field { width: 90%; padding: 12px; margin: 10px 0; border-radius: 8px; background: #0f172a; color: white; border: 1px solid #334155; }
-        
-        .btn { background: #38bdf8; color: #0f172a; padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
-        
-        /* ബട്ടണുകൾ */
-        .admin-controls { margin-top: 10px; display: none; }
-        .btn-delete { background: #ef4444; color: white; border: none; padding: 5px 12px; border-radius: 5px; cursor: pointer; margin-right: 5px; font-size: 0.8rem; }
-        .btn-rename { background: #f59e0b; color: white; border: none; padding: 5px 12px; border-radius: 5px; cursor: pointer; font-size: 0.8rem; }
+        body { 
+            font-family: 'Inter', 'Manjari', sans-serif; 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            margin: 0; 
+            overflow-x: hidden;
+        }
 
-        .search-bar { width: 80%; padding: 15px; margin: 20px 0; border-radius: 30px; border: 1px solid #334155; background: #1e293b; color: white; outline: none; text-align: center; }
+        header { 
+            padding: 80px 20px; 
+            background: radial-gradient(circle at top, #1e293b, #0f172a); 
+            text-align: center;
+        }
 
-        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-top: 30px; }
-        .media-box { background: #1e293b; padding: 15px; border-radius: 15px; border: 1px solid #334155; transition: 0.3s; position: relative; }
-        .media-box img, .media-box video { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; }
-        .file-name-display { font-weight: bold; color: #38bdf8; display: block; margin-top: 12px; font-size: 1.1rem; }
-        
-        .content-section { display: none; animation: fadeIn 0.5s; } 
+        .brand-icon {
+            width: 70px;
+            height: 70px;
+            fill: var(--primary);
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.4));
+        }
+
+        .logo { 
+            font-size: clamp(2.5rem, 8vw, 4rem); 
+            font-weight: 900; 
+            letter-spacing: 10px; 
+            color: var(--primary); 
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        /* നാവിഗേഷൻ ബാർ */
+        .nav-buttons { 
+            position: sticky; 
+            top: 0; 
+            background: rgba(15, 23, 42, 0.9); 
+            padding: 15px; 
+            z-index: 1000; 
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+
+        .nav-btn { 
+            background: transparent; 
+            color: var(--text-dim); 
+            border: 1px solid transparent; 
+            padding: 10px 20px; 
+            margin: 0 5px; 
+            border-radius: 30px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .nav-btn.active { 
+            background: rgba(56, 189, 248, 0.1); 
+            color: var(--primary); 
+            border: 1px solid var(--primary); 
+        }
+
+        .container { max-width: 1200px; margin: auto; padding: 40px 20px; min-height: 70vh; }
+
+        /* അഡ്മിൻ പാനൽ ബോക്സ് */
+        .admin-only { 
+            display: none; 
+            background: var(--card-bg); 
+            padding: 30px; 
+            border-radius: 20px; 
+            border: 2px dashed var(--primary); 
+            max-width: 500px; 
+            margin: 0 auto 40px auto; 
+            animation: fadeIn 0.5s;
+        }
+
+        .input-field { 
+            width: 100%; 
+            padding: 12px; 
+            margin: 10px 0; 
+            border-radius: 8px; 
+            background: #0f172a; 
+            color: white; 
+            border: 1px solid #334155; 
+            box-sizing: border-box;
+        }
+
+        .btn { 
+            background: var(--primary); 
+            color: #0f172a; 
+            padding: 12px; 
+            border: none; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        /* സെർച്ച് ബാർ */
+        .search-bar { 
+            width: 100%; 
+            max-width: 500px;
+            padding: 15px 25px; 
+            margin: 0 auto 40px auto; 
+            display: block;
+            border-radius: 50px; 
+            border: 1px solid #334155; 
+            background: #1e293b; 
+            color: white; 
+            outline: none;
+            text-align: center;
+        }
+
+        /* ഗാലറി ഐറ്റംസ് */
+        .gallery { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 25px; 
+        }
+
+        .media-box { 
+            background: var(--card-bg); 
+            padding: 12px; 
+            border-radius: 18px; 
+            border: 1px solid rgba(255,255,255,0.05); 
+            transition: 0.4s ease; 
+        }
+
+        .media-box:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        .media-box img, .media-box video { 
+            width: 100%; 
+            height: 200px; 
+            object-fit: cover; 
+            border-radius: 12px; 
+        }
+
+        .file-name-display { 
+            font-weight: bold; 
+            color: var(--primary); 
+            display: block; 
+            margin-top: 12px; 
+            font-size: 1rem; 
+        }
+
+        /* അഡ്മിൻ ബട്ടണുകൾ */
+        .admin-controls { margin-top: 12px; display: none; border-top: 1px solid #334155; padding-top: 10px; }
+        .btn-delete { background: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 5px; cursor: pointer; margin-right: 5px; }
+        .btn-rename { background: #f59e0b; color: white; border: none; padding: 6px 12px; border-radius: 5px; cursor: pointer; }
+
+        .content-section { display: none; animation: slideUp 0.6s ease; } 
         .active-section { display: block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        .admin-login-btn { position: fixed; bottom: 15px; right: 15px; font-size: 0.75rem; color: #334155; cursor: pointer; border: none; background: transparent; opacity: 0.6; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .admin-trigger { 
+            position: fixed; 
+            bottom: 15px; 
+            right: 15px; 
+            font-size: 0.7rem; 
+            color: #334155; 
+            cursor: pointer;
+            opacity: 0.5;
+        }
+
+        /* റെസ്പോൺസീവ് സെറ്റിംഗ്സ് */
+        @media (max-width: 600px) {
+            .nav-btn { padding: 8px 12px; font-size: 0.8rem; margin: 2px; }
+            .logo { letter-spacing: 5px; }
+            header { padding: 60px 15px; }
+            .gallery { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
     <div id="loader">
         <div class="loader-text">NAXORA</div>
+        <p style="color: var(--text-dim); letter-spacing: 2px;">Loading Portfolio...</p>
     </div>
 
     <header>
-        <div class="logo">NAXORA</div>
-        <p style="color: #94a3b8;">Creative Visual Portfolio</p>
+        <svg class="brand-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" />
+            <path d="M2 17L12 22L22 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h1 class="logo">NAXORA132</h1>
+        <p style="color: var(--text-dim); margin-top: 10px; font-weight: bold;">CREATIVE VISUALS</p>
     </header>
 
-    <div class="nav-buttons">
+    <nav class="nav-buttons">
         <button class="nav-btn active" onclick="showSection('home', this)">HOME</button>
         <button class="nav-btn" onclick="showSection('photos', this)">PHOTOS</button>
         <button class="nav-btn" onclick="showSection('videos', this)">VIDEOS</button>
-    </div>
+        <button id="logoutBtn" class="nav-btn" style="display:none; color: #ef4444; border: 1px solid #ef4444;" onclick="adminLogout()">LOGOUT</button>
+    </nav>
 
     <div class="container">
         <div id="home" class="content-section active-section">
-            <div style="background: #1e293b; padding: 50px 20px; border-radius: 20px; border: 1px solid #334155; margin-top: 20px;">
-                <h2 style="color: #38bdf8;">Welcome to Naxora</h2>
-                <p style="font-size: 1.2rem; line-height: 1.6; color: #cbd5e1;">Professional Portfolio Management</p>
+            <div style="background: var(--card-bg); padding: 60px 20px; border-radius: 25px; text-align: center; border: 1px solid rgba(255,255,255,0.05);">
+                <h2 style="color: var(--primary); font-size: 2rem;">Welcome to My Workspace</h2>
+                <p style="color: var(--text-dim); line-height: 1.8; max-width: 600px; margin: 20px auto;">
+                    ക്യാമറ കണ്ണിലൂടെയുള്ള കാഴ്ചകളും സർഗ്ഗാത്മകമായ വീഡിയോ എഡിറ്റിംഗുകളും ഇവിടെ ആസ്വദിക്കാം.
+                </p>
+                <div style="margin-top: 30px;">
+                    <span style="border: 1px solid var(--primary); padding: 8px 15px; border-radius: 20px; color: var(--primary); font-size: 0.9rem;">Photography</span>
+                    <span style="border: 1px solid var(--primary); padding: 8px 15px; border-radius: 20px; color: var(--primary); font-size: 0.9rem; margin-left: 10px;">Cinematography</span>
+                </div>
             </div>
         </div>
 
         <div id="photos" class="content-section">
             <div id="adminPhoto" class="admin-only">
-                <h4>Upload Photo</h4>
-                <input type="text" id="photoName" class="input-field" placeholder="Title">
+                <h3>Upload Image</h3>
+                <input type="text" id="photoName" class="input-field" placeholder="ചിത്രത്തിന്റെ പേര്">
                 <input type="file" id="photoInput" accept="image/*" class="input-field">
                 <button class="btn" onclick="uploadMedia('photo')">Add Photo</button>
             </div>
-            <input type="text" id="photoSearch" class="search-bar" placeholder="Search Photos..." onkeyup="filterMedia('photo')">
+            <input type="text" id="photoSearch" class="search-bar" placeholder="ചിത്രങ്ങൾ തിരയുക..." onkeyup="filterMedia('photo')">
             <div class="gallery" id="photoGallery"></div>
         </div>
 
         <div id="videos" class="content-section">
             <div id="adminVideo" class="admin-only">
-                <h4>Upload Video</h4>
-                <input type="text" id="videoName" class="input-field" placeholder="Title">
+                <h3>Upload Video</h3>
+                <input type="text" id="videoName" class="input-field" placeholder="വീഡിയോ പേര്">
                 <input type="file" id="videoInput" accept="video/*" class="input-field">
                 <button class="btn" onclick="uploadMedia('video')">Add Video</button>
             </div>
-            <input type="text" id="videoSearch" class="search-bar" placeholder="Search Videos..." onkeyup="filterMedia('video')">
+            <input type="text" id="videoSearch" class="search-bar" placeholder="വീഡിയോകൾ തിരയുക..." onkeyup="filterMedia('video')">
             <div class="gallery" id="videoGallery"></div>
         </div>
     </div>
 
-    <button class="admin-login-btn" onclick="adminLogin()">Admin Access</button>
+    <span class="admin-trigger" onclick="adminLogin()">Admin Panel</span>
 
     <script>
         let isAdminActive = false;
 
+        // പേജ് ലോഡിങ് കഴിഞ്ഞ് ലോഡർ മാറ്റാൻ
         window.onload = function() {
             setTimeout(() => {
-                const loader = document.getElementById('loader');
-                loader.style.opacity = '0';
-                setTimeout(() => { loader.style.display = 'none'; }, 800);
-            }, 2500);
+                document.getElementById('loader').style.opacity = '0';
+                setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 800);
+            }, 1800);
             loadFromStorage();
         };
 
+        // അഡ്മിൻ ലോഗിൻ ഫംഗ്ഷൻ
         function adminLogin() {
-            const password = prompt("Admin Password:");
-            if (password === "naxora2525") {
+            const pass = prompt("Password നൽകുക:");
+            if (pass === "naxora2525") {
                 isAdminActive = true;
                 updateAdminUI();
+                alert("അഡ്മിൻ മോഡ് സജീവമായി!");
+            } else if(pass != null) {
+                alert("തെറ്റായ പാസ്‌വേഡ്!");
             }
+        }
+
+        // ലോഗൗട്ട്
+        function adminLogout() {
+            isAdminActive = false;
+            location.reload(); 
         }
 
         function updateAdminUI() {
-            if (isAdminActive) {
-                document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'block');
-                document.querySelectorAll('.admin-controls').forEach(el => el.style.display = 'block');
-            }
+            document.querySelectorAll('.admin-only').forEach(el => el.style.display = isAdminActive ? 'block' : 'none');
+            document.querySelectorAll('.admin-controls').forEach(el => el.style.display = isAdminActive ? 'block' : 'none');
+            document.getElementById('logoutBtn').style.display = isAdminActive ? 'inline-block' : 'none';
         }
 
-        function showSection(sectionId, btn) {
+        // സെക്ഷൻ മാറ്റാൻ
+        function showSection(id, btn) {
             document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active-section'));
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active-section');
+            document.getElementById(id).classList.add('active-section');
             btn.classList.add('active');
             updateAdminUI();
         }
 
+        // അപ്‌ലോഡ് ഫംഗ്ഷൻ
         function uploadMedia(type) {
             const nameInput = document.getElementById(type + 'Name');
             const fileInput = document.getElementById(type + 'Input');
-            if (fileInput.files && fileInput.files[0]) {
+            const file = fileInput.files[0];
+            
+            if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    const newItem = { id: Date.now(), type: type, name: nameInput.value || "Untitled", src: e.target.result };
-                    displayMedia(newItem);
-                    saveToStorage(newItem);
-                    nameInput.value = ''; fileInput.value = '';
+                    const item = { 
+                        id: Date.now(), 
+                        type: type, 
+                        name: nameInput.value || "Untitled Project", 
+                        src: e.target.result 
+                    };
+                    displayMedia(item);
+                    saveToStorage(item);
+                    nameInput.value = '';
+                    fileInput.value = '';
                 };
-                reader.readAsDataURL(fileInput.files[0]);
+                reader.readAsDataURL(file);
+            } else {
+                alert("ഒരു ഫയൽ തിരഞ്ഞെടുക്കുക!");
             }
         }
 
         function displayMedia(item) {
             const gallery = document.getElementById(item.type + 'Gallery');
-            if (!gallery) return;
+            if(!gallery) return;
+
             const box = document.createElement('div');
             box.className = 'media-box';
             box.id = "item-" + item.id;
             box.setAttribute('data-name', item.name.toLowerCase());
             
-            let mediaHtml = (item.type === 'photo') ? `<img src="${item.src}">` : `<video src="${item.src}" controls></video>`;
+            let media = (item.type === 'photo') 
+                ? `<img src="${item.src}" loading="lazy">` 
+                : `<video src="${item.src}" controls></video>`;
             
             box.innerHTML = `
-                ${mediaHtml}
+                ${media}
                 <span class="file-name-display" id="name-${item.id}">${item.name}</span>
                 <div class="admin-controls" style="display: ${isAdminActive ? 'block' : 'none'}">
                     <button class="btn-delete" onclick="deleteItem(${item.id})">Delete</button>
@@ -199,283 +388,50 @@
             gallery.prepend(box);
         }
 
-        function renameItem(id) {
-            const newName = prompt("പുതിയ പേര് നൽകുക:");
-            if (newName && newName.trim() !== "") {
-                let list = JSON.parse(localStorage.getItem('naxora_data')) || [];
-                const index = list.findIndex(i => i.id === id);
-                if (index !== -1) {
-                    list[index].name = newName;
-                    localStorage.setItem('naxora_data', JSON.stringify(list));
-                    
-                    // UI അപ്ഡേറ്റ്
-                    document.getElementById("name-" + id).innerText = newName;
-                    document.getElementById("item-" + id).setAttribute('data-name', newName.toLowerCase());
-                }
-            }
-        }
-
-        function deleteItem(id) {
-            if(confirm("Delete item?")) {
-                let list = JSON.parse(localStorage.getItem('naxora_data')) || [];
-                list = list.filter(i => i.id !== id);
-                localStorage.setItem('naxora_data', JSON.stringify(list));
-                document.getElementById("item-" + id).remove();
-            }
-        }
-
+        // ലോക്കൽ സ്റ്റോറേജ് സേവിംഗ്
         function saveToStorage(item) {
             try {
-                let list = JSON.parse(localStorage.getItem('naxora_data')) || [];
-                list.push(item);
-                localStorage.setItem('naxora_data', JSON.stringify(list));
-            } catch (e) { alert("Storage full!"); }
+                let data = JSON.parse(localStorage.getItem('naxora_data')) || [];
+                data.push(item);
+                localStorage.setItem('naxora_data', JSON.stringify(data));
+            } catch(e) { 
+                alert("സ്റ്റോറേജ് പരിധി കഴിഞ്ഞു! ചെറിയ സൈസ് ഫയലുകൾ ഉപയോഗിക്കുക."); 
+            }
         }
 
         function loadFromStorage() {
-            let list = JSON.parse(localStorage.getItem('naxora_data')) || [];
-            list.forEach(item => displayMedia(item));
+            let data = JSON.parse(localStorage.getItem('naxora_data')) || [];
+            data.forEach(item => displayMedia(item));
         }
 
-        function filterMedia(type) {
-            const query = document.getElementById(type + 'Search').value.toLowerCase();
-            const boxes = document.getElementById(type + 'Gallery').getElementsByClassName('media-box');
-            for (let box of boxes) {
-                box.style.display = box.getAttribute('data-name').includes(query) ? "block" : "none";
+        function deleteItem(id) {
+            if(confirm("ഇത് ഡിലീറ്റ് ചെയ്യണോ?")) {
+                let data = JSON.parse(localStorage.getItem('naxora_data')) || [];
+                data = data.filter(i => i.id !== id);
+                localStorage.setItem('naxora_data', JSON.stringify(data));
+                document.getElementById("item-" + id).remove();
             }
-        }
-    </script>
-</body>
-</html>
-
-    <style>
-        /* ലോഡിങ് ആനിമേഷൻ */
-        #loader {
-            position: fixed;
-            width: 100%;
-            height: 100vh;
-            background: #0f172a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.8s ease-out;
-        }
-        .loader-text {
-            font-size: 4rem;
-            font-weight: 900;
-            color: #38bdf8;
-            letter-spacing: 15px;
-            text-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
-            animation: introAnim 2s ease-in-out forwards;
-            opacity: 0;
-        }
-        @keyframes introAnim {
-            0% { opacity: 0; transform: scale(0.8); letter-spacing: 5px; }
-            50% { opacity: 1; transform: scale(1.1); letter-spacing: 15px; }
-            100% { opacity: 1; transform: scale(1); letter-spacing: 12px; }
-        }
-
-        /* ജനറൽ സ്റ്റൈൽ */
-        body { font-family: 'Segoe UI', sans-serif; background-color: #0f172a; color: white; margin: 0; text-align: center; }
-        header { padding: 40px 20px; background: linear-gradient(135deg, #1e293b, #0f172a); }
-        .logo { font-size: 3rem; font-weight: 900; letter-spacing: 8px; color: #38bdf8; }
-        
-        .nav-buttons { margin: 0; position: sticky; top: 0; background: rgba(15, 23, 42, 0.95); padding: 15px; z-index: 1000; border-bottom: 1px solid #1e293b; backdrop-filter: blur(10px); }
-        .nav-btn { background: #1e293b; color: #38bdf8; border: 2px solid #38bdf8; padding: 10px 25px; margin: 5px; border-radius: 25px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        .nav-btn.active { background: #38bdf8; color: #0f172a; }
-        
-        .container { max-width: 1100px; margin: auto; padding: 20px; min-height: 80vh; }
-        
-        /* അഡ്മിൻ പാനൽ സ്റ്റൈൽ */
-        .admin-only { display: none; background: #1e293b; padding: 20px; border-radius: 12px; border: 2px dashed #38bdf8; max-width: 500px; margin: 20px auto; }
-        .input-field { width: 90%; padding: 12px; margin: 10px 0; border-radius: 8px; background: #0f172a; color: white; border: 1px solid #334155; }
-        
-        .btn { background: #38bdf8; color: #0f172a; padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
-        
-        /* ബട്ടണുകൾ */
-        .admin-controls { margin-top: 10px; display: none; }
-        .btn-delete { background: #ef4444; color: white; border: none; padding: 5px 12px; border-radius: 5px; cursor: pointer; margin-right: 5px; font-size: 0.8rem; }
-        .btn-rename { background: #f59e0b; color: white; border: none; padding: 5px 12px; border-radius: 5px; cursor: pointer; font-size: 0.8rem; }
-
-        .search-bar { width: 80%; padding: 15px; margin: 20px 0; border-radius: 30px; border: 1px solid #334155; background: #1e293b; color: white; outline: none; text-align: center; }
-
-        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-top: 30px; }
-        .media-box { background: #1e293b; padding: 15px; border-radius: 15px; border: 1px solid #334155; transition: 0.3s; position: relative; }
-        .media-box img, .media-box video { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; }
-        .file-name-display { font-weight: bold; color: #38bdf8; display: block; margin-top: 12px; font-size: 1.1rem; }
-        
-        .content-section { display: none; animation: fadeIn 0.5s; } 
-        .active-section { display: block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        .admin-login-btn { position: fixed; bottom: 15px; right: 15px; font-size: 0.75rem; color: #334155; cursor: pointer; border: none; background: transparent; opacity: 0.6; }
-    </style>
-</head>
-<body>
-
-    <div id="loader">
-        <div class="loader-text">NAXORA</div>
-    </div>
-
-    <header>
-        <div class="logo">NAXORA</div>
-        <p style="color: #94a3b8;">Creative Visual Portfolio</p>
-    </header>
-
-    <div class="nav-buttons">
-        <button class="nav-btn active" onclick="showSection('home', this)">HOME</button>
-        <button class="nav-btn" onclick="showSection('photos', this)">PHOTOS</button>
-        <button class="nav-btn" onclick="showSection('videos', this)">VIDEOS</button>
-    </div>
-
-    <div class="container">
-        <div id="home" class="content-section active-section">
-            <div style="background: #1e293b; padding: 50px 20px; border-radius: 20px; border: 1px solid #334155; margin-top: 20px;">
-                <h2 style="color: #38bdf8;">Welcome to Naxora</h2>
-                <p style="font-size: 1.2rem; line-height: 1.6; color: #cbd5e1;">Professional Portfolio Management</p>
-            </div>
-        </div>
-
-        <div id="photos" class="content-section">
-            <div id="adminPhoto" class="admin-only">
-                <h4>Upload Photo</h4>
-                <input type="text" id="photoName" class="input-field" placeholder="Title">
-                <input type="file" id="photoInput" accept="image/*" class="input-field">
-                <button class="btn" onclick="uploadMedia('photo')">Add Photo</button>
-            </div>
-            <input type="text" id="photoSearch" class="search-bar" placeholder="Search Photos..." onkeyup="filterMedia('photo')">
-            <div class="gallery" id="photoGallery"></div>
-        </div>
-
-        <div id="videos" class="content-section">
-            <div id="adminVideo" class="admin-only">
-                <h4>Upload Video</h4>
-                <input type="text" id="videoName" class="input-field" placeholder="Title">
-                <input type="file" id="videoInput" accept="video/*" class="input-field">
-                <button class="btn" onclick="uploadMedia('video')">Add Video</button>
-            </div>
-            <input type="text" id="videoSearch" class="search-bar" placeholder="Search Videos..." onkeyup="filterMedia('video')">
-            <div class="gallery" id="videoGallery"></div>
-        </div>
-    </div>
-
-    <button class="admin-login-btn" onclick="adminLogin()">Admin Access</button>
-
-    <script>
-        let isAdminActive = false;
-
-        window.onload = function() {
-            setTimeout(() => {
-                const loader = document.getElementById('loader');
-                loader.style.opacity = '0';
-                setTimeout(() => { loader.style.display = 'none'; }, 800);
-            }, 2500);
-            loadFromStorage();
-        };
-
-        function adminLogin() {
-            const password = prompt("Admin Password:");
-            if (password === "naxora2525") {
-                isAdminActive = true;
-                updateAdminUI();
-            }
-        }
-
-        function updateAdminUI() {
-            if (isAdminActive) {
-                document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'block');
-                document.querySelectorAll('.admin-controls').forEach(el => el.style.display = 'block');
-            }
-        }
-
-        function showSection(sectionId, btn) {
-            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active-section'));
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active-section');
-            btn.classList.add('active');
-            updateAdminUI();
-        }
-
-        function uploadMedia(type) {
-            const nameInput = document.getElementById(type + 'Name');
-            const fileInput = document.getElementById(type + 'Input');
-            if (fileInput.files && fileInput.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const newItem = { id: Date.now(), type: type, name: nameInput.value || "Untitled", src: e.target.result };
-                    displayMedia(newItem);
-                    saveToStorage(newItem);
-                    nameInput.value = ''; fileInput.value = '';
-                };
-                reader.readAsDataURL(fileInput.files[0]);
-            }
-        }
-
-        function displayMedia(item) {
-            const gallery = document.getElementById(item.type + 'Gallery');
-            if (!gallery) return;
-            const box = document.createElement('div');
-            box.className = 'media-box';
-            box.id = "item-" + item.id;
-            box.setAttribute('data-name', item.name.toLowerCase());
-            
-            let mediaHtml = (item.type === 'photo') ? `<img src="${item.src}">` : `<video src="${item.src}" controls></video>`;
-            
-            box.innerHTML = `
-                ${mediaHtml}
-                <span class="file-name-display" id="name-${item.id}">${item.name}</span>
-                <div class="admin-controls" style="display: ${isAdminActive ? 'block' : 'none'}">
-                    <button class="btn-delete" onclick="deleteItem(${item.id})">Delete</button>
-                    <button class="btn-rename" onclick="renameItem(${item.id})">Rename</button>
-                </div>
-            `;
-            gallery.prepend(box);
         }
 
         function renameItem(id) {
             const newName = prompt("പുതിയ പേര് നൽകുക:");
             if (newName && newName.trim() !== "") {
-                let list = JSON.parse(localStorage.getItem('naxora_data')) || [];
-                const index = list.findIndex(i => i.id === id);
-                if (index !== -1) {
-                    list[index].name = newName;
-                    localStorage.setItem('naxora_data', JSON.stringify(list));
-                    
-                    // UI അപ്ഡേറ്റ്
+                let data = JSON.parse(localStorage.getItem('naxora_data')) || [];
+                const idx = data.findIndex(i => i.id === id);
+                if (idx !== -1) {
+                    data[idx].name = newName;
+                    localStorage.setItem('naxora_data', JSON.stringify(data));
                     document.getElementById("name-" + id).innerText = newName;
-                    document.getElementById("item-" + id).setAttribute('data-name', newName.toLowerCase());
                 }
             }
         }
 
-        function deleteItem(id) {
-            if(confirm("Delete item?")) {
-                let list = JSON.parse(localStorage.getItem('naxora_data')) || [];
-                list = list.filter(i => i.id !== id);
-                localStorage.setItem('naxora_data', JSON.stringify(list));
-                document.getElementById("item-" + id).remove();
-            }
-        }
-
-        function saveToStorage(item) {
-            try {
-                let list = JSON.parse(localStorage.getItem('naxora_data')) || [];
-                list.push(item);
-                localStorage.setItem('naxora_data', JSON.stringify(list));
-            } catch (e) { alert("Storage full!"); }
-        }
-
-        function loadFromStorage() {
-            let list = JSON.parse(localStorage.getItem('naxora_data')) || [];
-            list.forEach(item => displayMedia(item));
-        }
-
+        // സെർച്ച് ഫിൽട്ടർ
         function filterMedia(type) {
-            const query = document.getElementById(type + 'Search').value.toLowerCase();
+            const q = document.getElementById(type + 'Search').value.toLowerCase();
             const boxes = document.getElementById(type + 'Gallery').getElementsByClassName('media-box');
-            for (let box of boxes) {
-                box.style.display = box.getAttribute('data-name').includes(query) ? "block" : "none";
+            for (let b of boxes) {
+                b.style.display = b.getAttribute('data-name').includes(q) ? "block" : "none";
             }
         }
     </script>
