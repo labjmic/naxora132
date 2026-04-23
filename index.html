@@ -3,216 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f172a'/><path d='M50 20L20 40L50 60L80 40L50 20Z' fill='%2338bdf8'/><path d='M20 60L50 80L80 60' fill='none' stroke='%2338bdf8' stroke-width='8' stroke-linecap='round'/></svg>">
-
-    <title>NAXORA132 | Professional Visual Portfolio</title>
+    <title>NAXORA | Professional Portfolio</title>
     <style>
-        :root {
-            --primary: #38bdf8;
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
-        }
-
-        html { scroll-behavior: smooth; }
-
+        /* Loading Animation */
         #loader {
-            position: fixed; width: 100%; height: 100vh; background: var(--bg);
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            z-index: 9999; transition: opacity 0.8s ease-out;
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: #0f172a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease-out;
         }
-        .loader-text { font-size: 2.5rem; font-weight: 900; color: var(--primary); letter-spacing: 10px; animation: pulse 1.5s ease-in-out infinite alternate; }
-        @keyframes pulse { from { transform: scale(0.9); opacity: 0.5; } to { transform: scale(1.05); opacity: 1; } }
+        .loader-text {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #38bdf8;
+            letter-spacing: 15px;
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+            animation: introAnim 2s ease-in-out forwards;
+            opacity: 0;
+        }
+        @keyframes introAnim {
+            0% { opacity: 0; transform: scale(0.8); letter-spacing: 5px; }
+            50% { opacity: 1; transform: scale(1.1); letter-spacing: 15px; }
+            100% { opacity: 1; transform: scale(1); letter-spacing: 12px; }
+        }
 
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text-main); margin: 0; overflow-x: hidden; }
-        header { padding: 80px 20px; background: radial-gradient(circle at top, #1e293b, #0f172a); text-align: center; }
-        .logo { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 900; letter-spacing: 10px; color: var(--primary); margin: 0; text-transform: uppercase; }
-
-        .nav-buttons { position: sticky; top: 0; background: rgba(15, 23, 42, 0.9); padding: 15px; z-index: 1000; backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.05); text-align: center; }
-        .nav-btn { background: transparent; color: var(--text-dim); border: 1px solid transparent; padding: 10px 20px; margin: 0 5px; border-radius: 30px; cursor: pointer; font-weight: bold; transition: 0.3s; font-size: 0.9rem; text-transform: uppercase; }
-        .nav-btn.active { background: rgba(56, 189, 248, 0.1); color: var(--primary); border: 1px solid var(--primary); }
-
-        .container { max-width: 1200px; margin: auto; padding: 40px 20px; min-height: 70vh; }
-        .admin-only { display: none; background: var(--card-bg); padding: 30px; border-radius: 20px; border: 2px dashed var(--primary); max-width: 500px; margin: 0 auto 40px auto; }
-        .input-field { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; background: #0f172a; color: white; border: 1px solid #334155; box-sizing: border-box; }
-        .btn { background: var(--primary); color: #0f172a; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; text-transform: uppercase; }
+        /* General Styles */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #0f172a; 
+            color: white; 
+            margin: 0; 
+            text-align: center; 
+            transition: border 0.3s ease;
+        }
+        header { padding: 60px 20px; background: linear-gradient(135deg, #1e293b, #0f172a); }
+        .logo { font-size: 3.5rem; font-weight: 900; letter-spacing: 10px; color: #38bdf8; text-transform: uppercase; }
         
-        .search-bar { width: 100%; max-width: 500px; padding: 15px 25px; margin: 0 auto 40px auto; display: block; border-radius: 50px; border: 1px solid #334155; background: #1e293b; color: white; text-align: center; }
-
-        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
-        .media-box { background: var(--card-bg); padding: 12px; border-radius: 18px; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s ease; }
-        .media-box:hover { transform: translateY(-8px); border-color: var(--primary); }
-        .media-box img, .media-box video { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; }
-        .file-name-display { font-weight: bold; color: var(--primary); display: block; margin-top: 12px; font-size: 1rem; }
-
-        .admin-controls { margin-top: 12px; display: none; border-top: 1px solid #334155; padding-top: 10px; }
-        .btn-delete { background: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 5px; cursor: pointer; }
+        .nav-buttons { 
+            position: sticky; 
+            top: 0; 
+            background: rgba(15, 23, 42, 0.95); 
+            padding: 15px; 
+            z-index: 1000; 
+            border-bottom: 1px solid #1e293b; 
+            backdrop-filter: blur(10px); 
+        }
+        .nav-btn { 
+            background: #1e293b; 
+            color: #38bdf8; 
+            border: 2px solid #38bdf8; 
+            padding: 10px 25px; 
+            margin: 5px; 
+            border-radius: 25px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            transition: 0.3s; 
+        }
+        .nav-btn:hover { background: rgba(56, 189, 248, 0.1); }
+        .nav-btn.active { background: #38bdf8; color: #0f172a; }
         
-        .content-section { display: none; animation: slideUp 0.6s ease; } 
+        .container { max-width: 1100px; margin: auto; padding: 40px 20px; min-height: 70vh; }
+        
+        /* Gallery Styles */
+        .gallery { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+            gap: 30px; 
+            margin-top: 30px; 
+        }
+        .media-box { 
+            background: #1e293b; 
+            padding: 15px; 
+            border-radius: 20px; 
+            border: 1px solid #334155; 
+            transition: transform 0.3s ease; 
+        }
+        .media-box:hover { transform: translateY(-10px); border-color: #38bdf8; }
+        .media-box img { width: 100%; height: 220px; object-fit: cover; border-radius: 12px; }
+        .file-name-display { 
+            font-weight: bold; 
+            color: #38bdf8; 
+            display: block; 
+            margin-top: 15px; 
+            font-size: 1.2rem; 
+            outline: none;
+        }
+        
+        .content-section { display: none; animation: fadeIn 0.6s ease; } 
         .active-section { display: block; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .admin-trigger { position: fixed; bottom: 15px; right: 15px; font-size: 0.7rem; color: #334155; cursor: pointer; opacity: 0.5; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Admin Trigger */
+        .admin-trigger { 
+            position: fixed; 
+            bottom: 20px; 
+            right: 20px; 
+            background: transparent; 
+            color: #1e293b; 
+            border: none; 
+            font-size: 0.8rem; 
+            cursor: pointer; 
+            opacity: 0.5;
+        }
     </style>
 </head>
 <body>
 
     <div id="loader">
         <div class="loader-text">NAXORA</div>
-        <p style="color: var(--text-dim); letter-spacing: 2px;">Loading Portfolio...</p>
     </div>
 
     <header>
-        <h1 class="logo">NAXORA132</h1>
-        <p style="color: var(--text-dim); margin-top: 10px; font-weight: bold;">VISUAL PORTFOLIO</p>
+        <div class="logo">NAXORA</div>
+        <p style="color: #94a3b8; font-size: 1.1rem; letter-spacing: 2px;">CREATIVE VISUAL PORTFOLIO</p>
     </header>
 
     <nav class="nav-buttons">
-        <button class="nav-btn active" onclick="showSection('home', this)">Home</button>
-        <button class="nav-btn" onclick="showSection('photos', this)">Photos</button>
-        <button class="nav-btn" onclick="showSection('videos', this)">Videos</button>
-        <button id="logoutBtn" class="nav-btn" style="display:none; color: #ef4444; border: 1px solid #ef4444;" onclick="adminLogout()">Logout</button>
+        <button class="nav-btn active" onclick="showSection('home', this)">HOME</button>
+        <button class="nav-btn" onclick="showSection('portfolio', this)">PORTFOLIO</button>
     </nav>
 
     <div class="container">
         <div id="home" class="content-section active-section">
-            <div style="background: var(--card-bg); padding: 60px 20px; border-radius: 25px; text-align: center;">
-                <h2 style="color: var(--primary);">Welcome to My Workspace</h2>
-                <p style="color: var(--text-dim);">Explore visual moments through my lens.</p>
+            <div style="background: #1e293b; padding: 60px 20px; border-radius: 30px; border: 1px solid #334155;">
+                <h1 style="color: #38bdf8; font-size: 2.5rem;">Welcome to Naxora</h1>
+                <p style="font-size: 1.2rem; color: #cbd5e1; max-width: 600px; margin: auto;">
+                    This is a professional showcase of creative projects. Explore the gallery to see my latest work.
+                </p>
             </div>
         </div>
 
-        <div id="photos" class="content-section">
-            <div id="adminPhoto" class="admin-only">
-                <h3>Upload Image</h3>
-                <input type="text" id="photoName" class="input-field" placeholder="Title">
-                <input type="file" id="photoInput" accept="image/*" class="input-field">
-                <button class="btn" onclick="handleUpload('photo')">Add Photo</button>
-            </div>
-            <input type="text" id="photoSearch" class="search-bar" placeholder="Search photos..." onkeyup="filterMedia('photo')">
-            <div class="gallery" id="photoGallery"></div>
-        </div>
+        <div id="portfolio" class="content-section">
+            <h2 style="color: #38bdf8;">Visual Gallery</h2>
+            <div class="gallery">
+                
+                <div class="media-box">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=500" alt="Work 1">
+                    <span class="file-name-display">Abstract Design 01</span>
+                </div>
 
-        <div id="videos" class="content-section">
-            <div id="adminVideo" class="admin-only">
-                <h3>Upload Video</h3>
-                <input type="text" id="videoName" class="input-field" placeholder="Title">
-                <input type="file" id="videoInput" accept="video/*" class="input-field">
-                <button class="btn" onclick="handleUpload('video')">Add Video</button>
+                <div class="media-box">
+                    <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=500" alt="Work 2">
+                    <span class="file-name-display">Web Interface Concept</span>
+                </div>
+
+                <div class="media-box">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=500" alt="Work 3">
+                    <span class="file-name-display">Modern Tech Visuals</span>
+                </div>
+
             </div>
-            <input type="text" id="videoSearch" class="search-bar" placeholder="Search videos..." onkeyup="filterMedia('video')">
-            <div class="gallery" id="videoGallery"></div>
+            <p id="adminHint" style="display:none; color: #f59e0b; margin-top: 20px; font-weight: bold;">
+                ADMIN MODE ACTIVE: You can now click on any text to edit it!
+            </p>
         </div>
     </div>
 
-    <span class="admin-trigger" onclick="adminLogin()">Admin Access</span>
+    <button class="admin-trigger" onclick="enableAdminMode()">Admin Access</button>
 
     <script>
-        let db;
-        let isAdminActive = false;
-
-        // --- IndexedDB Setup ---
-        const request = indexedDB.open("NaxoraPortfolioDB", 1);
-        request.onupgradeneeded = (e) => {
-            db = e.target.result;
-            db.createObjectStore("media", { keyPath: "id" });
-        };
-        request.onsuccess = (e) => {
-            db = e.target.result;
-            loadMediaFromDB();
-        };
-
-        window.onload = () => {
+        // Remove Loader
+        window.onload = function() {
             setTimeout(() => {
-                document.getElementById('loader').style.opacity = '0';
-                setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 800);
-            }, 1000);
+                const loader = document.getElementById('loader');
+                loader.style.opacity = '0';
+                setTimeout(() => { loader.style.display = 'none'; }, 800);
+            }, 2000);
         };
 
-        function adminLogin() {
-            if (prompt("Password:") === "naxora2525") {
-                isAdminActive = true;
-                updateAdminUI();
-            }
-        }
-
-        function adminLogout() { location.reload(); }
-
-        function updateAdminUI() {
-            document.querySelectorAll('.admin-only').forEach(el => el.style.display = isAdminActive ? 'block' : 'none');
-            document.querySelectorAll('.admin-controls').forEach(el => el.style.display = isAdminActive ? 'block' : 'none');
-            document.getElementById('logoutBtn').style.display = isAdminActive ? 'inline-block' : 'none';
-        }
-
-        function showSection(id, btn) {
+        // Navigation
+        function showSection(sectionId, btn) {
             document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active-section'));
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(id).classList.add('active-section');
+            document.getElementById(sectionId).classList.add('active-section');
             btn.classList.add('active');
         }
 
-        function handleUpload(type) {
-            const name = document.getElementById(type + 'Name').value || "Untitled";
-            const file = document.getElementById(type + 'Input').files[0];
-            if (!file) return alert("Select file!");
-
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const item = { id: Date.now(), type, name, src: e.target.result };
-                const transaction = db.transaction(["media"], "readwrite");
-                transaction.objectStore("media").add(item);
-                transaction.oncomplete = () => {
-                    displayMedia(item);
-                    document.getElementById(type + 'Name').value = '';
-                    document.getElementById(type + 'Input').value = '';
-                };
-            };
-            reader.readAsDataURL(file);
-        }
-
-        function displayMedia(item) {
-            const gallery = document.getElementById(item.type + 'Gallery');
-            const box = document.createElement('div');
-            box.className = 'media-box';
-            box.id = "item-" + item.id;
-            box.setAttribute('data-name', item.name.toLowerCase());
-            
-            const mediaTag = item.type === 'photo' ? `<img src="${item.src}">` : `<video src="${item.src}" controls></video>`;
-            
-            box.innerHTML = `
-                ${mediaTag}
-                <span class="file-name-display">${item.name}</span>
-                <div class="admin-controls" style="display: ${isAdminActive ? 'block' : 'none'}">
-                    <button class="btn-delete" onclick="deleteItem(${item.id})">Delete</button>
-                </div>
-            `;
-            gallery.prepend(box);
-        }
-
-        function loadMediaFromDB() {
-            const objectStore = db.transaction("media").objectStore("media");
-            objectStore.openCursor().onsuccess = (e) => {
-                const cursor = e.target.result;
-                if (cursor) {
-                    displayMedia(cursor.value);
-                    cursor.continue();
-                }
-            };
-        }
-
-        function deleteItem(id) {
-            if (confirm("Delete this?")) {
-                db.transaction(["media"], "readwrite").objectStore("media").delete(id);
-                document.getElementById("item-" + id).remove();
-            }
-        }
-
-        function filterMedia(type) {
-            const q = document.getElementById(type + 'Search').value.toLowerCase();
-            const boxes = document.getElementById(type + 'Gallery').getElementsByClassName('media-box');
-            for (let b of boxes) {
-                b.style.display = b.getAttribute('data-name').includes(q) ? "block" : "none";
+        // Admin Edit Mode
+        function enableAdminMode() {
+            const password = prompt("Enter Admin Password:");
+            if (password === "naxora123") {
+                alert("Admin Access Granted! You can now edit text directly on the page.");
+                
+                // Enable editing for the entire body
+                document.body.contentEditable = 'true';
+                
+                // Visual feedback that we are in Admin Mode
+                document.body.style.border = "4px solid #38bdf8";
+                document.getElementById('adminHint').style.display = 'block';
+                
+                // Show the portfolio section to start editing
+                showSection('portfolio', document.querySelectorAll('.nav-btn')[1]);
+            } else {
+                alert("Access Denied!");
             }
         }
     </script>
